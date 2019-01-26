@@ -1,5 +1,7 @@
 # DetectInconsistencies
-Detect the Inconsistencies in Public Security Vulnerability Reports
+The Final Aim is to Detect the Inconsistencies in Public Security Vulnerability Reports.
+So far,the program can craw the all CVE information. 
+
 # Dependence
     Python >=3.6
 # User Guide
