@@ -21,6 +21,7 @@ from report_sourceWare import craw_report_sourceware
 from lxml import html
 from getData import get_page
 from getData import get_small_cve_ref
+import requests
 '''
 程序入口
 '''

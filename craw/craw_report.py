@@ -59,13 +59,17 @@ def craw_report():
                         else:
                             print('cve error ' + link)
                         for link in cve_refs_list[1:]:  # 对每个cve_id，遍历它的所有的ref网页，保存ref的title等内容
+                            if requests.get(link, allow_redirects=False).status_code == 403 or 404:  # 过滤404和403网页
+                                continue
                             pos_http = link.find('http')
                             if link[pos_http+4] != ':':  # 过滤包含http但并不是网址的字符串，比如:http-cgi-nlog-netbios(1550)
                                 continue
                             if link.find('bugs.gentoo') != -1:
                                 dict_to_write = craw_report_bugsgentoo(cve_id, link, dict_to_write)
                             elif link.find('exploit-db.com') != -1:
-                                dict_to_write = craw_report_edb(cve_id, link, dict_to_write)
+                                #  过滤网页：http://www.exploit-db.com/exploits/36039(这是一个404的网页)
+                                if link != 'http://www.exploit-db.com/exploits/36039':
+                                    dict_to_write = craw_report_edb(cve_id, link, dict_to_write)
                             elif link.find('marc.info') != -1:
                                 dict_to_write = craw_report_marcinfo(cve_id, link, dict_to_write)
                             elif link.find('nvd.nist.gov') != -1:
@@ -93,7 +97,6 @@ def craw_report():
                         print("Timeout Error:" + str(errt) + " Please check: " + link)
                     except requests.exceptions.RequestException as err:
                         print("Other errors!" + str(err) + " Please check: " + link)
-
                 f_csv.write('dict_to_write = ' + str(dict_to_write))
 
 
