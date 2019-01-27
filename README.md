@@ -5,7 +5,7 @@ So far,the program can craw some public security vulnerablility information.
 # Dependence
     Python >=3.6
 # User Guide
-If you're in China,you need cross the Great Wall in order to craw some websites(e.g. arch/info website).I use shadowsocks to run the program.Use `proxychains` to force the program run with the proxy.
+If you're in China,you need cross the Great Wall in order to make the program craw some websites(e.g. arch/info website).I use shadowsocks to run the program.Use `proxychains` to force the program run with the proxy.
 
 If you need to cross the wall,run the program like this:
 
