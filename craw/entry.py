@@ -21,6 +21,7 @@ from report_sourceWare import craw_report_sourceware
 from lxml import html
 from getData import get_page
 from getData import get_small_cve_ref
+from getData import split_report_into_files
 import requests
 '''
 程序入口
@@ -53,7 +54,9 @@ if __name__ == "__main__":
     3.根据下面列出的用于测试的cve，进行调试即可。
     '''
     # craw_reference()
+    # get_small_cve_ref()
     craw_report()
+    # split_report_into_files()
     '''
     用于测试的cve（有的link暂时没找到对应的cve_id）：
     bugsGentoo:
@@ -86,15 +89,14 @@ if __name__ == "__main__":
         link: http://sourceware.org/bugzilla/show_bug.cgi?id=2584
     '''
 
-    '''
-    cve_id = 'CVE-2007-5301'
-    link = 'http://securesoftware.list.cr.yp.to/archive/0/53'
+'''
+    cve_id = 'CVE-1999-0108'
+    link = 'http://seclists.org/bugtraq/1997/May/191'
     dict_to_write = {}   # 用字典存储所有的报告信息
     dict_to_write[cve_id] = {'cve': {}, 'edb': {}, 'bugsGentoo': {}, 'marcInfo': {}, 'nvd': {}, 'seclists': {},
                              'secureSoftware': {}, 'securityFocus': {}, 'securityFocusOfficial': {},
                              'securityTracker': {},'sourceWare': {}}
 
     # 调试函数craw_report_xxx()
-    dict_to_write = craw_report_securesoftware(cve_id, link, dict_to_write)
-
-    '''
+    dict_to_write = craw_report_seclists(cve_id, link, dict_to_write)
+'''

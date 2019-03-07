@@ -30,7 +30,6 @@ def craw_content_seclists(cve_id, link, dict_to_write, tree):
     # 通过源代码而非F12获得xpath
     content_section = tree.xpath('string(/html/body/table[2]/tr[1]/td[2]/table/tr/td/pre)')
     if len(content_section) > 0:
-        dict_to_write[cve_id]['seclists'][link] = {}  # 要初始化，由于先执行craw_title_seclists函数，所以在该处初始化
         content_section = content_section.strip()
         dict_to_write[cve_id]['seclists'][link]['content'] = content_section
     else:
